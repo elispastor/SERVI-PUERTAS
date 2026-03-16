@@ -2,210 +2,220 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🚪 SERVIPUERTAS · Accesorios para puertas de vehículos</title>
-  
-  <!-- ANTI-CACHÉ -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Open Sans', sans-serif; background: #f4f4f4; color: #1e1e1e; }
+    body { 
+      font-family: 'Open Sans', sans-serif; 
+      background: #f4f4f4; 
+      color: #333;
+    }
     h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
-    .btn-wsp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25d366;
-      color: white;
-      border-radius: 50px;
-      padding: 12px 20px;
-      font-weight: 600;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .btn-nge {
-      background: #d32f2f;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 40px;
-      font-weight: 700;
-      transition: all 0.3s;
-      border: 2px solid #ffb300;
-    }
-    .btn-nge:hover {
-      background: #ffb300;
-      color: #d32f2f;
-      transform: scale(1.05);
-    }
+
+    /* MENÚ HAMBURGUESA */
     #mobile-menu { display: none; }
     #mobile-menu.mostrar { display: flex; }
-    .menu-hamburguesa { cursor: pointer; }
-    section { scroll-margin-top: 80px; }
+    .menu-btn { cursor: pointer; }
+
+    /* NAVEGACIÓN DORADA */
+    nav { 
+      background: linear-gradient(135deg, #d4af37, #b8860b); 
+      border: 3px solid #ffd700; 
+      border-radius: 50px;
+      margin: 1rem;
+      padding: 1rem 2rem;
+      box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+      position: sticky;
+      top: 1rem;
+      z-index: 100;
+    }
+
+    /* LOGO PRINCIPAL DORADO */
+    .logo-principal {
+      margin: 4rem 1rem 2rem 1rem;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      border-radius: 40px;
+      border: 5px solid #ffd700;
+      box-shadow: 0 25px 50px rgba(212,175,55,0.4);
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .logo-principal h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      color: white;
+      font-weight: 900;
+      text-shadow: 4px 4px 12px rgba(0,0,0,0.5);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .logo-principal .subtitulo-logo {
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      color: white;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+
+    /* PORTADA */
+    #inicio img {
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    /* SERVICIOS */
+    .servicios-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 2rem; 
+    }
+    .servicio-card { 
+      background: white; 
+      padding: 2rem; 
+      border-radius: 25px; 
+      border: 3px solid #d4af37; 
+      box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .servicio-card:hover { transform: scale(1.05); }
+    .servicio-card i { font-size: 3rem; color: #d4af37; margin-bottom: 1rem; }
+
+    /* CONTACTO DORADO */
+    .contacto-box {
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: white;
+      padding: 3rem 1.5rem;
+      border-radius: 40px;
+      border: 5px solid #ffd700;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(212,175,55,0.3);
+    }
+
+    /* QR */
+    .qr-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 30px;
+      border: 4px solid #d4af37;
+      text-align: center;
+      max-width: 400px;
+      margin: 3rem auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 4px solid #d4af37;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .logo-principal { padding: 2rem 1rem; }
+      .logo-principal h1 { font-size: 2.5rem; }
+      .servicio-card { padding: 1.5rem; }
+    }
   </style>
 </head>
-<body class="bg-gray-100">
+<body>
 
-<!-- WhatsApp flotante -->
-<a href="https://wa.me/573002893?text=Hola%2C%20quiero%20consultar%20por%20accesorios%20para%20puertas%20de%20veh%C3%ADculos" class="btn-wsp" target="_blank">
-  <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
-</a>
-
-<div class="max-w-6xl mx-auto p-4 md:p-6">
-
-  <!-- NAVEGACIÓN (escritorio) -->
-  <nav class="hidden md:flex justify-between items-center bg-[#d32f2f] text-white px-6 py-3 rounded-full mb-6 border-2 border-[#ffb300] shadow-lg sticky top-4 z-50">
-    <div class="font-['Montserrat'] text-2xl font-bold" style="color: #ffb300;">🚪 SERVIPUERTAS</div>
-    <div class="flex gap-6">
-      <a href="#inicio" class="hover:text-[#ffb300]">Inicio</a>
-      <a href="#servicios" class="hover:text-[#ffb300]">Servicios</a>
-      <a href="#nosotros" class="hover:text-[#ffb300]">Nosotros</a>
-      <a href="#vmv" class="hover:text-[#ffb300]">VMV</a>
-      <a href="#contacto" class="hover:text-[#ffb300]">Contacto</a>
-      <a href="/formulario-correcciones.html" class="hover:text-[#ffb300] font-bold" style="color: #ffb300;">📝 Actualizar</a>
+  <!-- NAV ESCRITORIO -->
+  <nav class="hidden md:flex justify-between items-center">
+    <div style="font-family: 'Montserrat'; font-size: 2rem; color: #ffd700; font-weight: 800;">🚪 SERVIPUERTAS</div>
+    <div class="flex gap-8 text-white font-bold text-lg">
+      <a href="#inicio" class="hover:text-[#ffd700]">Inicio</a>
+      <a href="#servicios" class="hover:text-[#ffd700]">Servicios</a>
+      <a href="#nosotros" class="hover:text-[#ffd700]">Nosotros</a>
+      <a href="#contacto" class="hover:text-[#ffd700]">Contacto</a>
     </div>
   </nav>
 
-  <!-- MENÚ HAMBURGUESA (móvil) -->
-  <div class="md:hidden sticky top-4 z-50">
-    <div class="flex justify-between items-center bg-[#d32f2f] text-white p-4 rounded-2xl mb-4 border-2 border-[#ffb300]">
-      <span class="font-['Montserrat'] text-xl font-bold" style="color: #ffb300;">🚪 SERVIPUERTAS</span>
-      <button id="menu-btn" class="menu-hamburguesa text-2xl">
+  <!-- MENÚ HAMBURGUESA MÓVIL -->
+  <div class="md:hidden sticky top-4 z-50 px-4">
+    <div class="bg-gradient-to-r from-[#d4af37] to-[#b8860b] p-4 rounded-2xl border-2 border-[#ffd700] flex justify-between items-center">
+      <span class="font-['Montserrat'] text-2xl font-bold text-[#ffd700]">🚪 SERVIPUERTAS</span>
+      <button id="menu-btn" class="menu-btn text-white text-3xl">
         <i class="fas fa-bars"></i>
       </button>
     </div>
-    <div id="mobile-menu" class="bg-[#d32f2f] text-white p-4 rounded-2xl flex-col gap-3 border-2 border-[#ffb300] mb-4">
-      <a href="#inicio" class="block py-2 hover:text-[#ffb300]">Inicio</a>
-      <a href="#servicios" class="block py-2 hover:text-[#ffb300]">Servicios</a>
-      <a href="#nosotros" class="block py-2 hover:text-[#ffb300]">Nosotros</a>
-      <a href="#vmv" class="block py-2 hover:text-[#ffb300]">VMV</a>
-      <a href="#contacto" class="block py-2 hover:text-[#ffb300]">Contacto</a>
-      <a href="/formulario-correcciones.html" class="block py-2 hover:text-[#ffb300] font-bold" style="color: #ffb300;">📝 Actualizar</a>
+    <div id="mobile-menu" class="bg-[#d4af37] text-white p-5 rounded-2xl flex-col gap-4 border-2 border-[#ffd700] mt-2 text-lg font-bold">
+      <a href="#inicio" class="block py-3 hover:text-[#ffd700]">Inicio</a>
+      <a href="#servicios" class="block py-3 hover:text-[#ffd700]">Servicios</a>
+      <a href="#nosotros" class="block py-3 hover:text-[#ffd700]">Nosotros</a>
+      <a href="#contacto" class="block py-3 hover:text-[#ffd700]">Contacto</a>
     </div>
   </div>
 
-  <!-- HERO con portada.png (debes subirla) -->
-  <section id="inicio" class="mb-12">
-    <div class="relative h-[500px] md:h-[600px] rounded-3xl overflow-hidden border-4 border-[#ffb300] shadow-2xl">
-      <img src="portada.png" alt="SERVIPUERTAS" class="w-full h-full object-cover object-center">
-      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/70 to-transparent pt-20 pb-10">
-        <div class="text-center text-white px-4">
-          <h1 class="text-4xl md:text-6xl font-bold mb-2" style="color: #ffb300;">🚪 SERVIPUERTAS</h1>
-          <p class="text-xl md:text-2xl mb-4">Accesorios para puertas de vehículos · Eleva vidrios · Alarmas</p>
-          <a href="#contacto" class="btn-nge inline-block">CONTACTAR</a>
-        </div>
-      </div>
-    </div>
+  <!-- PORTADA -->
+  <section id="inicio" class="px-4 mt-4">
+    <img src="portada.png" alt="SERVIPUERTAS" class="w-full rounded-3xl shadow-2xl">
   </section>
 
+  <!-- LOGO PRINCIPAL -->
+  <div class="logo-principal">
+    <h1>🚪 SERVIPUERTAS</h1>
+    <div class="subtitulo-logo">Accesorios para puertas de vehículos</div>
+  </div>
+
   <!-- SERVICIOS -->
-  <section id="servicios" class="mb-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #d32f2f;">🔧 NUESTROS SERVICIOS</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-[#ffb300] text-center">
-        <div class="text-5xl mb-2 text-[#d32f2f]">🚪</div>
-        <h3 class="font-bold text-xl mb-2">Eleva Vidrios Eléctricos</h3>
-        <p class="text-sm">Instalación y reparación de sistemas eléctricos para ventanas.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-[#ffb300] text-center">
-        <div class="text-5xl mb-2 text-[#d32f2f]">🔔</div>
-        <h3 class="font-bold text-xl mb-2">Alarmas</h3>
-        <p class="text-sm">Sistemas de seguridad para vehículos, instalación y mantenimiento.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-[#ffb300] text-center">
-        <div class="text-5xl mb-2 text-[#d32f2f]">🔑</div>
-        <h3 class="font-bold text-xl mb-2">Chapas & Cerrajerías</h3>
-        <p class="text-sm">Reparación y cambio de chapas, llaves y sistemas de cierre.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-[#ffb300] text-center">
-        <div class="text-5xl mb-2 text-[#d32f2f]">🛠️</div>
-        <h3 class="font-bold text-xl mb-2">Manijas & Pinería</h3>
-        <p class="text-sm">Todo tipo de manijas y repuestos para puertas de vehículos.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-[#ffb300] text-center">
-        <div class="text-5xl mb-2 text-[#d32f2f]">🅿️</div>
-        <h3 class="font-bold text-xl mb-2">Parqueadero Exclusivo</h3>
-        <p class="text-sm">Espacio seguro para nuestros clientes mientras los atendemos.</p>
-      </div>
+  <section id="servicios" class="px-4">
+    <h2 class="text-3xl md:text-4xl text-center font-bold mb-8" style="color: #d4af37;">🔧 NUESTROS SERVICIOS</h2>
+    <div class="servicios-grid">
+      <div class="servicio-card"><i class="fas fa-car"></i><h3 class="text-xl font-bold mb-2">Eleva Vidrios</h3><p>Instalación y reparación</p></div>
+      <div class="servicio-card"><i class="fas fa-bell"></i><h3 class="text-xl font-bold mb-2">Alarmas</h3><p>Sistemas de seguridad</p></div>
+      <div class="servicio-card"><i class="fas fa-lock"></i><h3 class="text-xl font-bold mb-2">Chapas</h3><p>Cerrajería automotriz</p></div>
+      <div class="servicio-card"><i class="fas fa-hand-paper"></i><h3 class="text-xl font-bold mb-2">Manijas</h3><p>Todo tipo de repuestos</p></div>
+      <div class="servicio-card"><i class="fas fa-parking"></i><h3 class="text-xl font-bold mb-2">Parqueadero</h3><p>Exclusivo para clientes</p></div>
     </div>
   </section>
 
   <!-- SOBRE NOSOTROS -->
-  <section id="nosotros" class="mb-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #d32f2f;">🏢 SOBRE NOSOTROS</h2>
-    <div class="bg-white p-8 rounded-3xl shadow-lg border-2 border-[#ffb300]">
-      <p class="text-lg mb-4">SERVIPUERTAS es una empresa cucuteña con amplia experiencia en la reparación y venta de accesorios para puertas de vehículos. Nos especializamos en eleva vidrios eléctricos, alarmas, chapas, manijas y todo lo relacionado con la seguridad y confort de tu automóvil.</p>
-      <p class="text-lg">Atendemos con calidad y rapidez, y contamos con parqueadero exclusivo para nuestros clientes.</p>
-    </div>
-  </section>
-
-  <!-- VMV -->
-  <section id="vmv" class="mb-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #d32f2f;">🎯 VMV</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-[#ffb300] text-center">
-        <div class="text-4xl mb-2 text-[#d32f2f]">🎯</div>
-        <h3 class="font-bold text-xl mb-2" style="color: #d32f2f;">Misión</h3>
-        <p>Brindar soluciones confiables en accesorios para puertas de vehículos, con productos de calidad y un servicio rápido y honesto.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-[#ffb300] text-center">
-        <div class="text-4xl mb-2 text-[#d32f2f]">👁️</div>
-        <h3 class="font-bold text-xl mb-2" style="color: #d32f2f;">Visión</h3>
-        <p>Ser el taller de referencia en Cúcuta para accesorios de puertas automotrices, reconocido por nuestra calidad y atención.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-[#ffb300] text-center">
-        <div class="text-4xl mb-2 text-[#d32f2f]">⭐</div>
-        <h3 class="font-bold text-xl mb-2" style="color: #d32f2f;">Valores</h3>
-        <p>Honestidad, rapidez, calidad, compromiso y trato amable.</p>
-      </div>
+  <section id="nosotros" class="px-4 max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl text-center font-bold mb-8" style="color: #d4af37;">🏢 SOBRE NOSOTROS</h2>
+    <div class="bg-white p-8 rounded-3xl shadow-xl border-4 border-[#d4af37]">
+      <p class="mb-4"><strong>SERVIPUERTAS</strong> es una empresa cucuteña con amplia experiencia en la reparación y venta de accesorios para puertas de vehículos. Nos especializamos en eleva vidrios eléctricos, alarmas, chapas, manijas y todo lo relacionado con la seguridad y confort de tu automóvil.</p>
+      <p>Atendemos con calidad y rapidez, y contamos con parqueadero exclusivo para nuestros clientes.</p>
     </div>
   </section>
 
   <!-- CONTACTO -->
-  <section id="contacto" class="mb-12">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8" style="color: #d32f2f;">📍 CONTACTO</h2>
-    <div class="bg-[#d32f2f] text-white p-8 rounded-3xl border-4 border-[#ffb300] text-center">
-      <p class="text-2xl mb-2"><i class="fas fa-phone-alt mr-2"></i> 572 5887 / 300 310 2893</p>
-      <p class="text-2xl mb-2">310 305 0470 / 313 854 9406</p>
-      <p class="text-lg mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Avenida 6 No. 1 - 61, Barrio Callejón, Frente a Bomberos, Cúcuta</p>
-      <p class="text-lg mb-2"><i class="fas fa-globe mr-2"></i> www.servipuertas.co</p>
-      <p class="text-lg mb-4"><i class="fas fa-envelope mr-2"></i> servipuertasCucuta</p>
-      <div class="flex justify-center gap-4 mt-4">
-        <a href="https://wa.me/573002893" class="bg-green-500 text-white px-6 py-3 rounded-full font-bold hover:bg-green-600">📱 WhatsApp</a>
-        <a href="tel:+573002893" class="bg-[#ffb300] text-[#d32f2f] px-6 py-3 rounded-full font-bold hover:bg-white">📞 Llamar</a>
-      </div>
+  <section id="contacto" class="px-4">
+    <h2 class="text-3xl md:text-4xl text-center font-bold mb-8" style="color: #d4af37;">📍 CONTACTO</h2>
+    <div class="contacto-box max-w-3xl mx-auto">
+      <p class="text-2xl md:text-3xl mb-4"><i class="fas fa-phone-alt mr-4"></i>572 5887 / 300 310 2893</p>
+      <p class="text-lg md:text-xl mb-4"><i class="fas fa-map-marker-alt mr-4"></i>Av. 6 No. 1-61, Barrio Callejón, Cúcuta</p>
+      <p class="text-base md:text-lg break-all"><i class="fas fa-envelope mr-4"></i>servipuertasCucuta</p>
     </div>
   </section>
 
+  <!-- QR -->
+  <div class="qr-box">
+    <h3 class="text-2xl font-bold mb-4" style="color: #d4af37;">📲 Guarda nuestro contacto</h3>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://servipuertas.netlify.app" alt="QR" class="mx-auto rounded-xl mb-4">
+    <p class="text-gray-600">Escanea con tu celular</p>
+  </div>
+
   <!-- FOOTER -->
-  <footer class="text-center py-6 text-gray-600 border-t-2 border-[#ffb300]">
-    <p>© 2026 SERVIPUERTAS · Todos los derechos reservados</p>
-    <p class="mt-2 text-sm">Diseño: <a href="https://wa.me/573244913371" class="text-[#d32f2f] font-semibold">NGE Tarjetas Digitales</a></p>
+  <footer>
+    <p class="text-xl font-bold">© 2026 SERVIPUERTAS</p>
+    <p class="mt-2">Diseño: <a href="https://wa.me/573244913371" class="font-bold" style="color: #d4af37;">NGE Tarjetas Digitales</a></p>
   </footer>
 
-</div>
-
-<!-- QR -->
-<div class="max-w-xs mx-auto mb-8 p-4 bg-white rounded-2xl shadow-lg border-2 border-[#ffb300] text-center">
-  <h3 class="font-bold text-[#d32f2f] mb-2">📲 Escanea y guarda el contacto</h3>
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://servipuertas.netlify.app" alt="QR SERVIPUERTAS" class="mx-auto rounded-lg">
-  <p class="text-xs text-gray-600 mt-2">Escanea con tu celular</p>
-</div>
-
-<script>
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('mostrar'));
-  document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('mostrar')));
-</script>
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('mostrar'));
+    document.querySelectorAll('#mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('mostrar')));
+  </script>
 
 </body>
 </html>
