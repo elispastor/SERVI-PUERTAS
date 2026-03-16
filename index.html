@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🚪 SERVIPUERTAS · Accesorios para puertas de vehículos</title>
+  <title>🚗 SERVIPUERTAS · Accesorios para puertas de vehículos</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -15,6 +15,20 @@
       color: #333;
     }
     h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+
+    /* Botón flotante de WhatsApp */
+    .btn-wsp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: white;
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-weight: 600;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
 
     #mobile-menu { display: none; }
     #mobile-menu.mostrar { display: flex; }
@@ -54,14 +68,6 @@
       line-height: 1.2;
     }
 
-    .logo-principal .subtitulo-logo {
-      font-size: clamp(1.5rem, 5vw, 2.2rem);
-      color: white;
-      font-weight: 700;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    }
-
-    /* PORTADAS */
     .portada {
       width: 100%;
       max-height: 500px;
@@ -94,6 +100,22 @@
     }
     .servicio-card:hover { transform: scale(1.05); }
     .servicio-card i { font-size: 3rem; color: #d4af37; margin-bottom: 1rem; }
+
+    /* VMV cards */
+    .vmv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    .vmv-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 25px;
+      border: 3px solid #d4af37;
+      text-align: center;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+    }
 
     .contacto-box {
       background: linear-gradient(135deg, #d4af37, #b8860b);
@@ -131,12 +153,19 @@
 </head>
 <body>
 
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/573002893?text=Hola%2C%20quiero%20consultar%20por%20accesorios%20para%20puertas%20de%20veh%C3%ADculos" class="btn-wsp" target="_blank">
+  <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+</a>
+
   <!-- NAV ESCRITORIO -->
   <nav class="hidden md:flex justify-between items-center">
-<div style="font-family: 'Montserrat'; font-size: 2rem; color: #ffd700; font-weight: 800;">🚗 SERVIPUERTAS</div>    <div class="flex gap-8 text-white font-bold text-lg">
+    <div style="font-family: 'Montserrat'; font-size: 2rem; color: #ffd700; font-weight: 800;">🚗 SERVIPUERTAS</div>
+    <div class="flex gap-8 text-white font-bold text-lg">
       <a href="#inicio" class="hover:text-[#ffd700]">Inicio</a>
       <a href="#servicios" class="hover:text-[#ffd700]">Servicios</a>
       <a href="#nosotros" class="hover:text-[#ffd700]">Nosotros</a>
+      <a href="#vmv" class="hover:text-[#ffd700]">VMV</a>
       <a href="#contacto" class="hover:text-[#ffd700]">Contacto</a>
     </div>
   </nav>
@@ -144,7 +173,8 @@
   <!-- MENÚ HAMBURGUESA MÓVIL -->
   <div class="md:hidden sticky top-4 z-50 px-4">
     <div class="bg-gradient-to-r from-[#d4af37] to-[#b8860b] p-4 rounded-2xl border-2 border-[#ffd700] flex justify-between items-center">
-<span class="font-['Montserrat'] text-2xl font-bold text-[#ffd700]">🚗 SERVIPUERTAS</span>      <button id="menu-btn" class="menu-btn text-white text-3xl">
+      <span class="font-['Montserrat'] text-2xl font-bold text-[#ffd700]">🚗 SERVIPUERTAS</span>
+      <button id="menu-btn" class="menu-btn text-white text-3xl">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -152,26 +182,32 @@
       <a href="#inicio" class="block py-3 hover:text-[#ffd700]">Inicio</a>
       <a href="#servicios" class="block py-3 hover:text-[#ffd700]">Servicios</a>
       <a href="#nosotros" class="block py-3 hover:text-[#ffd700]">Nosotros</a>
+      <a href="#vmv" class="block py-3 hover:text-[#ffd700]">VMV</a>
       <a href="#contacto" class="block py-3 hover:text-[#ffd700]">Contacto</a>
     </div>
   </div>
 
-  <!-- GALERÍA DE PORTADAS (3 imágenes) -->
-  <section id="inicio" class="px-4 mt-4">
-    <h2 class="text-3xl md:text-4xl text-center font-bold mb-6" style="color: #d4af37;">🚗 BIENVENIDO A NUESTRAS INSTALACIONES</h2>
+  <!-- LOGO PRINCIPAL (ARRIBA) -->
+  <div class="logo-principal">
+    <h1>🚗 SERVIPUERTAS</h1>
+    <div class="subtitulo-logo">Accesorios para puertas de vehículos</div>
+  </div>
+
+  <!-- BIENVENIDA DESPUÉS DEL LOGO -->
+  <section class="px-4 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #d4af37;">🚗 BIENVENIDO A NUESTRAS INSTALACIONES</h2>
+    <p class="text-lg text-gray-700 max-w-3xl mx-auto">Conoce nuestro taller y la calidad de nuestro trabajo</p>
+  </section>
+
+  <!-- GALERÍA DE PORTADAS (4 imágenes) -->
+  <section id="inicio" class="px-4 mt-8">
     <div class="galeria-portadas">
       <img src="portada.png" alt="SERVIPUERTAS" class="portada">
       <img src="portada2.jpg" alt="Instalación de elevavidrios" class="portada">
-      <img src="portada3.jpg" alt="Taller de SERVIPUERTAS" class="portada">
-      <img src="portada4.jpg" alt="Taller SERVIPUERTAS" class="portada">
+      <img src="portada3.jpg" alt="Taller SERVIPUERTAS" class="portada">
+      <img src="portada4.jpg" alt="Nuestro equipo trabajando" class="portada">
     </div>
   </section>
-
-  <!-- LOGO PRINCIPAL -->
-  <div class="logo-principal">
-<h1>🚗 SERVIPUERTAS</h1>
-    <div class="subtitulo-logo">Accesorios para puertas de vehículos</div>
-  </div>
 
   <!-- SERVICIOS -->
   <section id="servicios" class="px-4">
@@ -194,6 +230,28 @@
     </div>
   </section>
 
+  <!-- VMV (Misión, Visión, Valores) -->
+  <section id="vmv" class="px-4">
+    <h2 class="text-3xl md:text-4xl text-center font-bold mb-8" style="color: #d4af37;">🎯 NUESTRA FILOSOFÍA</h2>
+    <div class="vmv-grid">
+      <div class="vmv-card">
+        <div class="text-5xl mb-4">🎯</div>
+        <h3 class="text-2xl font-bold mb-3" style="color: #d4af37;">Misión</h3>
+        <p>Brindar soluciones confiables en accesorios para puertas de vehículos, con productos de calidad y un servicio rápido y honesto.</p>
+      </div>
+      <div class="vmv-card">
+        <div class="text-5xl mb-4">👁️</div>
+        <h3 class="text-2xl font-bold mb-3" style="color: #d4af37;">Visión</h3>
+        <p>Ser el taller de referencia en Cúcuta para accesorios de puertas automotrices, reconocido por nuestra calidad y atención.</p>
+      </div>
+      <div class="vmv-card">
+        <div class="text-5xl mb-4">⭐</div>
+        <h3 class="text-2xl font-bold mb-3" style="color: #d4af37;">Valores</h3>
+        <p>Honestidad, rapidez, calidad, compromiso y trato amable.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACTO -->
   <section id="contacto" class="px-4">
     <h2 class="text-3xl md:text-4xl text-center font-bold mb-8" style="color: #d4af37;">📍 CONTACTO</h2>
@@ -213,7 +271,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <p class="text-xl font-bold">© 2026 SERVIPUERTAS - TODOS LOS DRECHOS RESERVADOS</p>
+    <p class="text-xl font-bold">© 2026 SERVIPUERTAS</p>
     <p class="mt-2">Diseño: <a href="https://wa.me/573244913371" class="font-bold" style="color: #d4af37;">NGE Tarjetas Digitales</a></p>
   </footer>
 
